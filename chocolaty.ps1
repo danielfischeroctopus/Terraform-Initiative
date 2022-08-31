@@ -19,3 +19,5 @@ New-ItemProperty -Path HKLM:\SOFTWARE\Policies\Microsoft\Windows\CredentialsDele
 $securePassword = ConvertTo-SecureString 'Passw0rd1' -AsPlainText -Force
 $credential = New-Object System.Management.Automation.PSCredential 'azure-vm\daniel', $securePassword
 Invoke-Command -Authentication CredSSP -ScriptBlock {choco install sql-server-express -y} -ComputerName azure-vm -Credential $credential
+
+choco install sql-server-management-studio
