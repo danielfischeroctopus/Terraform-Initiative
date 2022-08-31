@@ -16,6 +16,6 @@ choco install notepadplusplus -y
 
 # Run PowerShell script under a new user & Install SQL-Server-Express
 # make var
-$securePassword = ConvertTo-SecureString 'passwordgoeshere' -AsPlainText -Force
-$credential = New-Object System.Management.Automation.PSCredential 'hostname\testadmin', $securePassword
-Invoke-Command -Authentication CredSSP -ScriptBlock {choco install sql-server-express -y} -ComputerName hostname -Credential $credential
+$securePassword = ConvertTo-SecureString 'Passw0rd1' -AsPlainText -Force
+$credential = New-Object System.Management.Automation.PSCredential 'azure-vm\daniel', $securePassword
+Invoke-Command -Authentication CredSSP -ScriptBlock {choco install sql-server-express -y} -ComputerName azure-vm -Credential $credential
