@@ -23,7 +23,7 @@ New-Item -Path HKLM:\SOFTWARE\Policies\Microsoft\Windows\CredentialsDelegation -
 New-ItemProperty -Path HKLM:\SOFTWARE\Policies\Microsoft\Windows\CredentialsDelegation\AllowFreshCredentialsWhenNTLMOnly -Name 1 -Value * -PropertyType String
 
 
-# Run PowerShell script under a new user & Install SQL-Server-Express
+# Run PowerShell script under a new user & Install Octopus Deploy
 # make var
 $securePassword = ConvertTo-SecureString 'Passw0rd1' -AsPlainText -Force
 $credential = New-Object System.Management.Automation.PSCredential 'azure-vm\daniel', $securePassword
