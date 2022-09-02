@@ -7,9 +7,10 @@
 # 
 ####################################################################################################
 
-
 # Set Execution Policy
 Set-ExecutionPolicy Bypass -Scope Process -Force
+
+$name = "OD"
 
 # Install Chocolaty
 Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
@@ -26,8 +27,8 @@ New-ItemProperty -Path HKLM:\SOFTWARE\Policies\Microsoft\Windows\CredentialsDele
 # Run PowerShell script under a new user & Install Octopus Deploy
 # make var
 $securePassword = ConvertTo-SecureString 'Passw0rd1' -AsPlainText -Force
-$credential = New-Object System.Management.Automation.PSCredential 'azure-vm\daniel', $securePassword
-Invoke-Command -Authentication CredSSP -ScriptBlock {choco install octopusdeploy -y} -ComputerName azure-vm -Credential $credential
+$credential = New-Object System.Management.Automation.PSCredential '$name\daniel', $securePassword
+Invoke-Command -Authentication CredSSP -ScriptBlock {choco install octopusdeploy -y} -ComputerName $name -Credential $credential
 
 
 
