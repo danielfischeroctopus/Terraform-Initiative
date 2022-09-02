@@ -1,5 +1,5 @@
 ####################################################################################################
-# Octopus Deploy server configuration script.
+# Octopus Tentacle server configuration script.
 # 
 # Install Choco, Octopus Tentacle
 # 
