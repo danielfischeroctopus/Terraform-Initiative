@@ -1,5 +1,5 @@
 ####################################################################################################
-# SQL Server configuration script.
+# Octopus Deploy server configuration script.
 # 
 # Install Choco, Octopus Server
 # 
