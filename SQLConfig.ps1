@@ -10,6 +10,10 @@
 # Set Execution Policy
 Set-ExecutionPolicy Bypass -Scope Process -Force
 
+# Parameters
+$name = "SQL"
+
+
 # Install Chocolaty
 Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
 choco install notepadplusplus -y
@@ -26,6 +30,6 @@ New-ItemProperty -Path HKLM:\SOFTWARE\Policies\Microsoft\Windows\CredentialsDele
 # Run PowerShell script under a new user & Install SQL-Server-Express
 # make var
 $securePassword = ConvertTo-SecureString 'Passw0rd1' -AsPlainText -Force
-$credential = New-Object System.Management.Automation.PSCredential 'azure-vm\daniel', $securePassword
-Invoke-Command -Authentication CredSSP -ScriptBlock {choco install sql-server-express -y} -ComputerName azure-vm -Credential $credential
-Invoke-Command -Authentication CredSSP -ScriptBlock {choco install sql-server-management-studio -y} -ComputerName azure-vm -Credential $credential
+$credential = New-Object System.Management.Automation.PSCredential '$name\daniel', $securePassword
+Invoke-Command -Authentication CredSSP -ScriptBlock {choco install sql-server-express -y} -ComputerName $name -Credential $credential
+Invoke-Command -Authentication CredSSP -ScriptBlock {choco install sql-server-management-studio -y} -ComputerName $name -Credential $credential
