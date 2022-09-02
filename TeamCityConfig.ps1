@@ -27,7 +27,7 @@ New-ItemProperty -Path HKLM:\SOFTWARE\Policies\Microsoft\Windows\CredentialsDele
 # make var
 $securePassword = ConvertTo-SecureString 'Passw0rd1' -AsPlainText -Force
 $credential = New-Object System.Management.Automation.PSCredential 'azure-vm\daniel', $securePassword
-Invoke-Command -Authentication CredSSP -ScriptBlock {choco install choco install teamcity -y} -ComputerName azure-vm -Credential $credential
+Invoke-Command -Authentication CredSSP -ScriptBlock {choco install teamcity -y} -ComputerName azure-vm -Credential $credential
 
 # Install Software
 
