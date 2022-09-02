@@ -1,3 +1,12 @@
+####################################################################################################
+# SQL server configuration script.
+# 
+# Install Choco, SQL-Server-Express, SQL-Server-Management-Studio
+# 
+# 
+# 
+####################################################################################################
+
 # Set Execution Policy
 Set-ExecutionPolicy Bypass -Scope Process -Force
 
@@ -20,4 +29,6 @@ $securePassword = ConvertTo-SecureString 'Passw0rd1' -AsPlainText -Force
 $credential = New-Object System.Management.Automation.PSCredential 'azure-vm\daniel', $securePassword
 Invoke-Command -Authentication CredSSP -ScriptBlock {choco install sql-server-express -y} -ComputerName azure-vm -Credential $credential
 
+# Install Software
 choco install sql-server-management-studio
+
