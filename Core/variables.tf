@@ -25,12 +25,6 @@ variable "active_directory_domain" {
   default = "TFI.LOCAL"
 }
 
-## DC/AD Variables
-
-variable "hostname" {
-  default = "DC.TFI.LOCAL"
-}
-
 ## network module
 
 variable "subnetName" {
