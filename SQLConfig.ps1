@@ -16,7 +16,6 @@ $name = "SQL"
 
 # Install Chocolaty
 Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
-choco install notepadplusplus -y
 
 # Configure server as both client and server to enable double hops (https://octopus.com/blog/azure-script-extension#supporting-powershell-double-hops)
 Enable-WSManCredSSP -Role Server -Force
@@ -30,6 +29,6 @@ New-ItemProperty -Path HKLM:\SOFTWARE\Policies\Microsoft\Windows\CredentialsDele
 # Run PowerShell script under a new user & Install SQL-Server-Express
 # make var
 $securePassword = ConvertTo-SecureString 'Passw0rd1' -AsPlainText -Force
-$credential = New-Object System.Management.Automation.PSCredential '$name\daniel', $securePassword
+$credential = New-Object System.Management.Automation.PSCredential 'TFI.LOCAL\daniel', $securePassword
 Invoke-Command -Authentication CredSSP -ScriptBlock {choco install sql-server-express -y} -ComputerName $name -Credential $credential
 Invoke-Command -Authentication CredSSP -ScriptBlock {choco install sql-server-management-studio -y} -ComputerName $name -Credential $credential
