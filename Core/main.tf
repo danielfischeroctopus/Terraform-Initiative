@@ -1,7 +1,5 @@
-## Locals for DC promotion.
+# Locals for DC promotion script.
 locals {
-  # Create DC commands
-
   winrm_command        = "winrm quickconfig -quiet"
   import_command       = "Import-Module ADDSDeployment"
   password_command     = "$password = ConvertTo-SecureString ${var.domainPass} -AsPlainText -Force"
@@ -13,7 +11,6 @@ locals {
 }
 
 # Resources and Providers
-
 provider "azurerm" {
   features {}
 }
@@ -23,8 +20,7 @@ resource "azurerm_resource_group" "rg" {
   location = var.location
 }
 
-# Networking module
-
+# Networking module. 
 module "networking" {
   source = ".\\modules\\networking"
 
@@ -36,8 +32,7 @@ module "networking" {
   depends_on = [azurerm_resource_group.rg]
 }
 
-# VM Module
-
+# VM Modules
 module "DC_vm" {
   source = ".\\modules\\vm"
 
