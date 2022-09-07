@@ -1,4 +1,4 @@
-# variable defaults are used in modules if nothing is set (From what I've seen at least?)
+# Set some variable defaults for common values.
 variable "rgName" {
   default = "Terraform-Initiative"
 }
