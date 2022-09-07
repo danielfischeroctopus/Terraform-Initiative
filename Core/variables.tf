@@ -26,8 +26,7 @@ variable "active_directory_domain" {
   default = "TFI.LOCAL"
 }
 
-## network module
-
+# Network module
 variable "subnetName" {
   default = "subnet"
 }
@@ -36,6 +35,7 @@ variable "virNetName" {
   default = "virtualNetwork"
 }
 
+# extensions
 variable "extSQL" {
   default = <<PROTECTED_SETTINGS
     {
