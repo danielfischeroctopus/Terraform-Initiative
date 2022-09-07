@@ -18,12 +18,6 @@ provider "azurerm" {
   features {}
 }
 
-provider "ad" {
-  winrm_hostname = var.hostname
-  winrm_username = var.domainUser
-  winrm_password = var.domainPass
-}
-
 resource "azurerm_resource_group" "rg" {
   name     = var.rgName
   location = var.location
