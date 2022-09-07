@@ -1,3 +1,4 @@
+# azure windows vm
 resource "azurerm_windows_virtual_machine" "vm" {
   name                       = var.vmName
   resource_group_name        = var.rgName
@@ -21,10 +22,7 @@ resource "azurerm_windows_virtual_machine" "vm" {
   }
 }
 
-# --------------------------------------------------------------------
-# Network Interface - DC
-# --------------------------------------------------------------------
-
+# nic & public ip
 resource "azurerm_public_ip" "public_ip" {
   name                    = "${var.vmName}_public_ip"
   location                = var.location
@@ -46,10 +44,7 @@ resource "azurerm_network_interface" "nic" {
   }
 }
 
-# --------------------------------------------------------------------
-# Script Extension
-# --------------------------------------------------------------------
-
+# extension
 resource "azurerm_virtual_machine_extension" "extension" {
   name                 = azurerm_windows_virtual_machine.vm.name
   virtual_machine_id   = azurerm_windows_virtual_machine.vm.id
