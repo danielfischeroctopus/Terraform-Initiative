@@ -35,7 +35,7 @@ variable "virNetName" {
   default = "virtualNetwork"
 }
 
-# extensions
+# Extensions. Links to the scripts at the root folder. 
 variable "extSQL" {
   default = <<PROTECTED_SETTINGS
     {
