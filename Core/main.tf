@@ -20,7 +20,7 @@ resource "azurerm_resource_group" "rg" {
   location = var.location
 }
 
-# Networking module. 
+# Networking module. Setting rgName to var.rgName is passing the core module's default to the empty var in the module.
 module "networking" {
   source = ".\\modules\\networking"
 
