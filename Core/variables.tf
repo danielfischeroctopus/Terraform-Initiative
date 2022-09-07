@@ -15,7 +15,7 @@ variable "localPass" {
 }
 
 variable "domainUser" {
-  default = "DCOCTO.LOCAL\\daniel"
+  default = "TFI.LOCAL\\daniel"
 }
 
 variable "domainPass" {
