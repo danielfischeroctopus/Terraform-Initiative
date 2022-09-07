@@ -49,12 +49,3 @@ variable "extSQL" {
     }
   PROTECTED_SETTINGS
 }
-
-/* 
-    extension = <<SETTINGS
-    {
-        "fileUris": ["C:\\My Drive\\VS Code\\Terraform Initiative\\Terraform-Project\\Scripts\\bginfo.ps1"],
-        "commandToExecute": "powershell.exe -File \"./bginfo.ps1\"",
-        "commandToExecute": "powershell.exe -Command \"${local.powershell_command}\""
-    }
-SETTINGS */
