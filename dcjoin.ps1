@@ -1,3 +1,5 @@
+Set-ExecutionPolicy Bypass -Scope Process -Force
+
 $dc = 'TFI.LOCAL'
 $pw = 'Passw0rd1' | ConvertTo-SecureString -asPlainText –Force
 $usr = 'TFI.LOCAL\daniel'
