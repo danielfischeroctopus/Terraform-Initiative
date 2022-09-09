@@ -1,3 +1,3 @@
 # Terraform-Initiative
 
-Scripts for Daniel's Terraform project. (WIP)
+Scripts in root for remote access on targets
