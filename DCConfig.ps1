@@ -3,3 +3,12 @@ $thumbprint = (Get-ChildItem -Path 'Cert:LocalMachine\MY' | Where-Object {$_.Sub
 winrm quickconfig -quiet
 winrm create winrm/config/Listener?Address=*+Transport=HTTPS '@{Hostname=${DC.TFI.LOCAL}; CertificateThumbprint=$thumpprint}'
 
+$FirewallParam = @{
+    DisplayName = 'Windows Remote Management (HTTPS-In)'
+    Direction = 'Inbound'
+    LocalPort = 5986
+    Protocol = 'TCP'
+    Action = 'Allow'
+    Program = 'System'
+}
+New-NetFirewallRule @FirewallParam
