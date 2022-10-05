@@ -1,3 +1,8 @@
+Set-ExecutionPolicy Bypass -Scope Process -Force
+Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+choco install golang
+
+/*
 New-SelfSignedCertificate -Subject 'CN=DC.TFI.LOCAL' -TextExtension '2.5.29.37={text}1.3.6.1.5.5.7.3.1'
 $thumbprint = (Get-ChildItem -Path 'Cert:LocalMachine\MY' | Where-Object {$_.Subject -Match 'CN=DC.TFI.LOCAL'}).Thumbprint
 
@@ -12,3 +17,4 @@ $FirewallParam = @{
     Program = 'System'
 }
 New-NetFirewallRule @FirewallParam
+*/
