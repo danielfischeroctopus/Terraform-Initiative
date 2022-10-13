@@ -2,7 +2,7 @@ $user = "TFI.LOCAL\daniel"
 $pass = "Passw0rd1"
 
 winrm quickconfig -quiet
-Set-Item WSMan:\\localhost\\Client\\TrustedHosts * -Force
+Set-Item WSMan:\localhost\Client\TrustedHosts * -Force
 #Install-Module PowerShellGet -AllowClobber -Force
 #Install-PackageProvider NuGet -Force
 Import-Module ActiveDirectory -Force
