@@ -2,9 +2,9 @@ $user = "TFI.LOCAL\daniel"
 $pass = "Passw0rd1"
 
 winrm quickconfig -quiet
-Set-Item WSMan:\\localhost\\Client\\TrustedHosts *
-Install-Module PowerShellGet -AllowClobber -Force
-Install-PackageProvider NuGet -Force
+Set-Item WSMan:\\localhost\\Client\\TrustedHosts * -Force
+#Install-Module PowerShellGet -AllowClobber -Force
+#Install-PackageProvider NuGet -Force
 Import-Module ActiveDirectory -Force
 Set-ExecutionPolicy Bypass -Scope Process -Force
 Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
