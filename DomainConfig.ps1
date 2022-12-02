@@ -5,6 +5,9 @@ winrm quickconfig -quiet
 Set-Item WSMan:\localhost\Client\TrustedHosts * -Force
 #Install-Module PowerShellGet -AllowClobber -Force
 #Install-PackageProvider NuGet -Force
+
+New-NetFirewallRule -DisplayName "Allow Inbound port 5985" -Direction Inbound -LocalPort 5985 -Protocol TCP -Action Allow
+
 Import-Module ActiveDirectory -Force
 #Set-ExecutionPolicy Bypass -Scope Process -Force
 #Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
