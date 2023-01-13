@@ -15,5 +15,5 @@ Import-Module ActiveDirectory -Force
 $pass = ConvertTo-SecureString $pass -AsPlainText -Force
 Add-WindowsFeature -name ad-domain-services -IncludeManagementTools
 Install-ADDSForest -CreateDnsDelegation:$false -DomainMode 7 -DomainName "TFI.LOCAL" -ForestMode 7 -InstallDns:$true -SafeModeAdministratorPassword $pass -Force:$true
-shutdown -r -t 10
 New-ADOrganizationalUnit -Name "Computers" -Path "DC=TFI,DC=LOCAL"
+shutdown -r -t 10
