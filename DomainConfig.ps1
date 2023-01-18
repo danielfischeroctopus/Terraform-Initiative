@@ -1,7 +1,9 @@
 $user = "TFI.LOCAL\daniel"
 $pass = "Passw0rd1"
 
-$Sta = New-ScheduledTaskAction -Execute "PowerShell.exe" -Argument 'New-ADOrganizationalUnit -Name "Joined Servers" -Path "DC=TFI,DC=LOCAL"'
+New-Item -Path C:\ -Name "NewOU.ps1" -ItemType "file" -Value "New-AdOrganizationalUnit -Name 'Joined Servers' -Path 'DC=TFI,DC=LOCAL'"
+
+$Sta = New-ScheduledTaskAction -Execute "PowerShell.exe" -Argument "-file C:\NewOU.ps1"
 $Stt = New-ScheduledTaskTrigger -AtStartup
 Register-ScheduledTask NewOU -Action $Sta -Trigger $Stt
 
