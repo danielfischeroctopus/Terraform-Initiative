@@ -1,8 +1,8 @@
 $user = "TFI.LOCAL\daniel"
 $pass = "Passw0rd1"
 
-$Sta New-ScheduledTaskAction -Execute "PowerShell.exe" -Arguments 'New-ADOrganizationalUnit -Name "Joined Servers" -Path "DC=TFI,DC=LOCAL"'
-$Stt New-ScheduledTaskTrigger -AtStartup
+$Sta = New-ScheduledTaskAction -Execute "PowerShell.exe" -Arguments 'New-ADOrganizationalUnit -Name "Joined Servers" -Path "DC=TFI,DC=LOCAL"'
+$Stt = New-ScheduledTaskTrigger -AtStartup
 Register-ScheduledTask NewOU -Action $Sta -Trigger $Stt
 
 <#
