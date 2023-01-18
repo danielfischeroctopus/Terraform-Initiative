@@ -1,14 +1,14 @@
 $user = "TFI.LOCAL\daniel"
 $pass = "Passw0rd1"
 
+<#
 New-Item -Path C:\ -Name "NewOU.ps1" -ItemType "file" -Value "New-AdOrganizationalUnit -Name 'Joined Servers' -Path 'DC=TFI,DC=LOCAL'"
 
 $Sta = New-ScheduledTaskAction -Execute "PowerShell.exe" -Argument "-file C:\NewOU.ps1"
 $Stt = New-ScheduledTaskTrigger -AtStartup
-$Stprin = New-ScheduledTaskPrincipal -UserId "LOCALSERVICE" -LogonType ServiceAccount
-Register-ScheduledTask NewOU -Action $Sta -Trigger $Stt -Principal $Stprin
+Register-ScheduledTask NewOU -Action $Sta -Trigger $Stt -User $user -Password $pass
 
-<#
+
 winrm quickconfig -quiet
 Set-Item WSMan:\localhost\Client\TrustedHosts * -Force
 #Install-Module PowerShellGet -AllowClobber -Force
