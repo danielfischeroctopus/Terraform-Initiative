@@ -2,7 +2,7 @@ $user = "TFI\daniel"
 $pass = "Passw0rd1"
 
 <#
-New-Item -Path C:\ -Name "NewOU.ps1" -ItemType "file" -Value "New-AdOrganizationalUnit -Name 'Joined Servers' -Path 'DC=TFI,DC=LOCAL' -ProtectedFromAccidentalDeletion $False"
+New-Item -Path C:\ -Name "NewOU.ps1" -ItemType "file" -Value "New-AdOrganizationalUnit -Name `"Joined Servers`" -Path `"DC=TFI,DC=LOCAL`" -ProtectedFromAccidentalDeletion $False"
 
 $Sta = New-ScheduledTaskAction -Execute "PowerShell.exe" -Argument "-file C:\NewOU.ps1"
 $Stt = New-ScheduledTaskTrigger -AtStartup
