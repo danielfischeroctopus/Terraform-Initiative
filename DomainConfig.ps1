@@ -5,7 +5,8 @@ New-Item -Path C:\ -Name "NewOU.ps1" -ItemType "file" -Value "New-AdOrganization
 
 $Sta = New-ScheduledTaskAction -Execute "PowerShell.exe" -Argument "-file C:\NewOU.ps1"
 $Stt = New-ScheduledTaskTrigger -AtStartup
-Register-ScheduledTask NewOU -Action $Sta -Trigger $Stt
+$Stprin = New-ScheduledTaskPrincipal -UserId "LOCALSERVICE" -LogonType ServiceAccount
+Register-ScheduledTask NewOU -Action $Sta -Trigger $Stt -Principal $Stprin
 
 <#
 winrm quickconfig -quiet
