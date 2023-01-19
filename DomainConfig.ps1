@@ -30,4 +30,4 @@ Install-ADDSForest -CreateDnsDelegation:$false -DomainMode 7 -DomainName "TFI.LO
 Start-Service -Name "Active Directory Domain Services"
 Start-Sleep -s 30
 New-AdOrganizationalUnit -Name "Domain Computers" -Path "DC=TFI,DC=LOCAL"  -ProtectedFromAccidentalDeletion $False
-shutdown -r -t 10
+#shutdown -r -t 10
