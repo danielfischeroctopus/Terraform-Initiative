@@ -21,7 +21,7 @@ winrm set winrm/config/service '@{AllowUnencrypted="true"}'
 winrm set winrm/config/winrs '@{MaxMemoryPerShellMB="1024"}'
 #>
 
-Import-Module ActiveDirectory -Force
+#Import-Module ActiveDirectory -Force
 #Set-ExecutionPolicy Bypass -Scope Process -Force
 #Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
 $pass = ConvertTo-SecureString $pass -AsPlainText -Force
