@@ -5,7 +5,7 @@ $xml = @"
 <?xml version="1.0" encoding="UTF-16"?>
 <Task version="1.4" xmlns="http://schemas.microsoft.com/windows/2004/02/mit/task">
   <RegistrationInfo>
-    <Author>TFI\dadmin</Author>
+    <Author>dadmin</Author>
     <URI>\NewOU</URI>
   </RegistrationInfo>
   <Triggers>
@@ -28,6 +28,7 @@ $xml = @"
     <Principal id="Author">
       <UserId>S-1-5-21-4067610301-2148880173-3558472291-500</UserId>
       <LogonType>Password</LogonType>
+      <UserId>TFI\dadmin</UserId>
       <RunLevel>HighestAvailable</RunLevel>
     </Principal>
   </Principals>
@@ -61,7 +62,7 @@ $xml = @"
 </Task>
 "@
 
-Register-ScheduledTask -TaskName "NewOU" -Xml $xml -Force -User $user -Password $pass
+Register-ScheduledTask -TaskName "NewOU" -Xml $xml -Force# -User $user -Password $pass
 
 <#
 New-AdOrganizationalUnit -Name "AAA" -Path "DC=TFI,DC=LOCAL"  -ProtectedFromAccidentalDeletion $False
