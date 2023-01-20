@@ -1,9 +1,7 @@
 # Set Execution Policy
 Set-ExecutionPolicy Bypass -Scope Process -Force
 
-import-module ActiveDirectory
-
 # Install Chocolaty
 Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
 
-choco install Teamcity
+choco install octopusdeploy
