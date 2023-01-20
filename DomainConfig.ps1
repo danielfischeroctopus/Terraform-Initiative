@@ -2,8 +2,8 @@ $user = "TFI\daniel"
 $pass = "Passw0rd1"
 $pass = ConvertTo-SecureString $pass -AsPlainText -Force
 
-#Add-WindowsFeature -name ad-domain-services -IncludeManagementTools
-#Install-ADDSForest -CreateDnsDelegation:$false -DomainMode 7 -DomainName "TFI.LOCAL" -ForestMode 7 -InstallDns:$true -SafeModeAdministratorPassword $pass -NoRebootOnCompletion -Force:$true
+Add-WindowsFeature -name ad-domain-services -IncludeManagementTools
+Install-ADDSForest -CreateDnsDelegation:$false -DomainMode 7 -DomainName "TFI.LOCAL" -ForestMode 7 -InstallDns:$true -SafeModeAdministratorPassword $pass -NoRebootOnCompletion -Force:$true
 
 Start-Transcript -Path "C:\transcripts\transcript0.txt" -NoClobber
 
