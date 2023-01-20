@@ -7,5 +7,5 @@ Install-ADDSForest -CreateDnsDelegation:$false -DomainMode 7 -DomainName "TFI.LO
 Start-Service -DisplayName "Active Directory Domain Services"
 Start-Service -DisplayName "Active Directory Web Services"
 Start-Sleep -s 120 # Gives time for the ADWS service to boot and accept the next command.
-New-AdOrganizationalUnit -Name "Domain Computers" -Path "DC=TFI,DC=LOCAL"  -ProtectedFromAccidentalDeletion $False
+New-AdOrganizationalUnit -Name "Domain Computers" -Path "DC=TFI,DC=LOCAL" -ProtectedFromAccidentalDeletion $False
 shutdown -r -t 10
