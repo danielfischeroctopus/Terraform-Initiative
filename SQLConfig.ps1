@@ -12,10 +12,10 @@ Set-ExecutionPolicy Bypass -Scope Process -Force
 
 # Parameters
 $name = "SQL"
-$dcname = "DC.TFI.LOCAL"
+$dcname = "10.0.1.10"
 
 # Install Chocolaty
-Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+#Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
 
 # Configure server as both client and server to enable double hops (https://octopus.com/blog/azure-script-extension#supporting-powershell-double-hops)
 Enable-WSManCredSSP -Role Server -Force
