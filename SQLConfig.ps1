@@ -30,7 +30,7 @@ New-ItemProperty -Path HKLM:\SOFTWARE\Policies\Microsoft\Windows\CredentialsDele
 $securePassword = ConvertTo-SecureString 'Passw0rd1' -AsPlainText -Force
 $credential = New-Object System.Management.Automation.PSCredential 'TFI.LOCAL\daniel', $securePassword
 
-Start-Sleep -s 120
+Start-Sleep -s 500
 Invoke-Command -Authentication CredSSP -ScriptBlock {New-AdOrganizationalUnit -Name "Domain Computers" -Path "DC=TFI,DC=LOCAL" -ProtectedFromAccidentalDeletion $False} -ComputerName $dcname -Credential $credential
 
 #Invoke-Command -Authentication CredSSP -ScriptBlock {choco install sql-server-express -y} -ComputerName $name -Credential $credential
