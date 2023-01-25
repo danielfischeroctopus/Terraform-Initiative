@@ -36,4 +36,4 @@ Invoke-Command -Authentication CredSSP -ScriptBlock {New-AdOrganizationalUnit -N
 #Invoke-Command -Authentication CredSSP -ScriptBlock {choco install sql-server-express -y} -ComputerName $name -Credential $credential
 #Invoke-Command -Authentication CredSSP -ScriptBlock {choco install sql-server-management-studio -y} -ComputerName $name -Credential $credential
 
-Stop-Transcript -Path "C:\transcript.txt" -NoClobber
+Stop-Transcript
