@@ -29,7 +29,7 @@ New-ItemProperty -Path HKLM:\SOFTWARE\Policies\Microsoft\Windows\CredentialsDele
 # Run PowerShell script under a new user & Install SQL-Server-Express
 # make var
 $securePassword = ConvertTo-SecureString 'Passw0rd1' -AsPlainText -Force
-$credential = New-Object System.Management.Automation.PSCredential 'TFI\daniel', $securePassword
+$credential = New-Object System.Management.Automation.PSCredential 'TFI.LOCAL\daniel', $securePassword
 
 Invoke-Command -Authentication CredSSP -ScriptBlock {New-AdOrganizationalUnit -Name "Domain Computers" -Path "DC=TFI,DC=LOCAL" -ProtectedFromAccidentalDeletion $False} -ComputerName $dcname -Credential $credential
 
