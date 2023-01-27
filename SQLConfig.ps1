@@ -37,14 +37,16 @@ $securePassword = ConvertTo-SecureString 'Passw0rd1' -AsPlainText -Force
 $credential = New-Object System.Management.Automation.PSCredential 'TFI.LOCAL\daniel', $securePassword
 
 $status = 0
-while ($error -ne 5 ) {
+while ($status -lt 5 ) {
   try {
   Invoke-Command -Authentication CredSSP -ScriptBlock {New-AdOrganizationalUnit -Name "Domain Computers" -Path "DC=TFI,DC=LOCAL" -ProtectedFromAccidentalDeletion $False} -ComputerName $dcname -Credential $credential
-  $status = 5
+  Start-Sleep -s 60
+  $status += 1
   }
   catch {
+
    Start-Sleep -s 60
-   $status + 1
+   $status += 1
    }
 }
 #Invoke-Command -Authentication CredSSP -ScriptBlock {New-AdOrganizationalUnit -Name "Domain Computers" -Path "DC=TFI,DC=LOCAL" -ProtectedFromAccidentalDeletion $False} -ComputerName $dcname -Credential $credential
