@@ -1,7 +1,8 @@
 <#########################################################################
 # This script is intened to start tackling my domain config issues. I aim to auto-login the dc to finish configuring GPO stuff, 
-# which will hopefully allow the jumpbox to execute things successfully
+#   which will hopefully allow the jumpbox to execute things successfully.
 #
+# I'll test this in my DomainConfig.ps1 then migrate everything to DC_Config.ps1 for naming consistency.
 #
 ##########################################################################>
 
