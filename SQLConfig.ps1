@@ -6,11 +6,11 @@
 # 
 # 
 ####################################################################################################
-Start-Transcript -Path "C:\transcript.txt" -NoClobber
-# Set Execution Policy
-Set-ExecutionPolicy Bypass -Scope Process -Force
+#Write-Host "Starting Sleep for 60 seconds."
+#Start-Sleep -s 60
 
-# Parameters
+Start-Transcript -Path "C:\transcript.txt" -NoClobber
+
 $name = "SQL"
 $dcname = "10.0.1.10"
 
@@ -31,22 +31,32 @@ $securePassword = ConvertTo-SecureString 'Passw0rd1' -AsPlainText -Force
 $credential = New-Object System.Management.Automation.PSCredential 'TFI.LOCAL\daniel', $securePassword
 
 $status = 0
-while ($status -lt 5 ) {
-  try {
-  Invoke-Command -Authentication CredSSP -ScriptBlock {New-AdOrganizationalUnit -Name "Domain Computers" -Path "DC=TFI,DC=LOCAL" -ProtectedFromAccidentalDeletion $False} -ComputerName $dcname -Credential $credential
-  Start-Sleep -s 60
-  $status += 1
-  }
-  
-  catch [Microsoft.ActiveDirectory.Management.Commands.NewADOrganizationalUnit]
+while ($status -lt 5 )
+{
+  try 
   {
-   Start-Sleep -s 60
-   $status += 1
-   }
-}
-#Invoke-Command -Authentication CredSSP -ScriptBlock {New-AdOrganizationalUnit -Name "Domain Computers" -Path "DC=TFI,DC=LOCAL" -ProtectedFromAccidentalDeletion $False} -ComputerName $dcname -Credential $credential
+    Invoke-Command -Authentication CredSSP -ScriptBlock {New-AdOrganizationalUnit -Name "Domain Computers" -Path "DC=TFI,DC=LOCAL" -ProtectedFromAccidentalDeletion $False} -ComputerName $dcname -Credential $credential -ErrorAction Continue
+    
+    if ($Error[0] -match "An attempt was made to add an object to the directory with a name that is already in use")
+        {
+            Write-Host "Error caught in the IF statement: $($Error[0])"
+        }
 
-#Invoke-Command -Authentication CredSSP -ScriptBlock {choco install sql-server-express -y} -ComputerName $name -Credential $credential
-#Invoke-Command -Authentication CredSSP -ScriptBlock {choco install sql-server-management-studio -y} -ComputerName $name -Credential $credential
+    Write-Host "End try, total attempts: $($status)"
+    Write-Host "Starting Sleep for 60 seconds to try again."
+    Start-Sleep -s 60
+    $status += 1
+    }
+
+  catch
+  {
+   Write-Host "Me thinks thy OU doth exist."
+   Write-Host $_
+   Write-Host "Starting Sleep for 60 seconds and trying again."
+   Start-Sleep -s 60
+   Write-Host "End catch attempt: $($status)"
+   $status += 1
+  }
+}
 
 Stop-Transcript
