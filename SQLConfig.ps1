@@ -37,8 +37,9 @@ while ($status -lt 5 ) {
   Start-Sleep -s 60
   $status += 1
   }
-  catch {
-
+  
+  catch [Microsoft.ActiveDirectory.Management.Commands.NewADOrganizationalUnit]
+  {
    Start-Sleep -s 60
    $status += 1
    }
