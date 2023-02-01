@@ -14,12 +14,6 @@ Set-ExecutionPolicy Bypass -Scope Process -Force
 $name = "SQL"
 $dcname = "10.0.1.10"
 
-Write-Host "Testing pings"
-Write-Host "pinging IP"
-ping 10.0.1.10
-Write-Host "pinging Hostname"
-ping DC.TFI.LOCAL
-
 # Install Chocolaty
 #Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
 
