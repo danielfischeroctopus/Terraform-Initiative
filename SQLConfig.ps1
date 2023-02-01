@@ -6,8 +6,8 @@
 # 
 # 
 ####################################################################################################
-#Write-Host "Starting Sleep for 60 seconds."
-#Start-Sleep -s 60
+Write-Host "Starting Sleep for 60 seconds."
+Start-Sleep -s 60
 
 Start-Transcript -Path "C:\transcript.txt" -NoClobber
 
@@ -40,9 +40,11 @@ while ($status -lt 5 )
     if ($Error[0] -match "An attempt was made to add an object to the directory with a name that is already in use")
         {
             Write-Host "Error caught in the IF statement: $($Error[0])"
+            $Error[0] = $null
+            $status = 5
         }
 
-    Write-Host "End try, total attempts: $($status)"
+    Write-Host "End of inital Try, total attempts: $($status)"
     Write-Host "Starting Sleep for 60 seconds to try again."
     Start-Sleep -s 60
     $status += 1
