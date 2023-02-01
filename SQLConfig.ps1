@@ -40,6 +40,7 @@ while ($status -lt 5 )
     if ($Error[0] -match "An attempt was made to add an object to the directory with a name that is already in use")
         {
             Write-Host "Error caught in the IF statement: $($Error[0])"
+            Write-Host "Me thinks thy OU doth exist."
             $Error[0] = $null
             $status = 5
         }
@@ -52,8 +53,6 @@ while ($status -lt 5 )
 
   catch
   {
-   Write-Host "Me thinks thy OU doth exist."
-   Write-Host $_
    Write-Host "Starting Sleep for 60 seconds and trying again."
    Start-Sleep -s 60
    Write-Host "End catch attempt: $($status)"
