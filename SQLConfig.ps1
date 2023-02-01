@@ -17,6 +17,8 @@ Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://cho
 # Configure server as both client and server to enable double hops (https://octopus.com/blog/azure-script-extension#supporting-powershell-double-hops)
 Enable-WSManCredSSP -Role Server -Force
 Enable-WSManCredSSP -Role Client -DelegateComputer * -Force
+Set-Item WSMan:\localhost\Client\TrustedHosts * -Force
+winrm set winrm/config/service/Auth '@{CredSSP="true"}'
 
 # Allow use of NTLM account since we're using local account and not domain.
 #New-Item -Path HKLM:\SOFTWARE\Policies\Microsoft\Windows\CredentialsDelegation -Name AllowFreshCredentialsWhenNTLMOnly -Force
